@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { LadderLeague, Participant } from "../types";
+import { bleachify } from "../utils";
 
 defineProps<{
   participant: Participant;
@@ -20,9 +21,7 @@ defineProps<{
       />
     </div>
 
-    <div class="name">
-      {{ participant.name }}
-    </div>
+    <div class="name" v-html="bleachify(participant.name)" />
 
     <div class="won">
       {{ participant.wonMatches }}

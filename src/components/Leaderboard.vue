@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { LadderLeague, Participant } from "../types";
+import { bleachify } from "../utils";
 import ParticipantRow from "./ParticipantRow.vue";
 
 defineProps<{
@@ -10,9 +11,9 @@ defineProps<{
 
 <template>
   <div class="header" :class="league" aria-hidden="true">
-    <div class="rank">Rank</div>
-    <div class="character">Main</div>
-    <div class="name">Player</div>
+    <div class="rank" v-html="bleachify('Rank')" />
+    <div class="character" v-html="bleachify('Main')" />
+    <div class="name" v-html="bleachify('Player')" />
     <div class="won">Won</div>
     <div class="lost">Lost</div>
   </div>

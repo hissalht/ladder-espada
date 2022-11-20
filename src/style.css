@@ -14,10 +14,15 @@
   descent-override: 0%;
 }
 
+/* Hack to get a "super obliqued" A letter */
 @font-face {
-  font-family: "Avant Garde";
+  font-family: "Avant Garde Oblique";
   src: url("./assets/fonts/ITCAvantGardeStd-BoldObl.otf") format("opentype");
   font-weight: 700;
-  font-style: italic;
   descent-override: 0%;
+}
+
+.obl {
+  font-family: "Avant Garde Oblique", sans-serif;
+  font-style: italic;
 }
