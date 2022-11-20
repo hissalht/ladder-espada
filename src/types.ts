@@ -11,3 +11,12 @@ export interface Participant {
   lostMatches: number;
   points: number;
 }
+
+export interface LadderTournament {
+  participants: Participant[];
+}
+
+export enum LadderLeague {
+  BEGINNER = "beginner",
+  EXPERT = "expert",
+}

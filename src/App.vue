@@ -1,71 +1,24 @@
 <script lang="ts"></script>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { Participant, Character } from "./types";
+import { onMounted } from "vue";
 import ParticipantRow from "./components/ParticipantRow.vue";
+import { useStore } from "./store";
 
-const TOURNAMENT_SLUG = "LadderEspadaD1";
+const store = useStore();
 
-const tournament = ref();
-
-const participants = ref<Participant[]>();
-
-onMounted(async () => {
-  const response = await fetch(
-    `/.netlify/functions/tournament?tournament=${TOURNAMENT_SLUG}`
-  );
-  const data = await response.json();
-  tournament.value = data.tournament;
-
-  console.log(data.tournament.participants);
-
-  const tempParticipants: Participant[] = data.tournament.participants.map(
-    ({ participant }: any) => ({
-      id: participant.id,
-      name: participant.name,
-      character: Character.SOL,
-      wonMatches: 0,
-      lostMatches: 0,
-      points: 0,
-    })
-  );
-
-  // parse participants
-  data.tournament.matches.forEach(({ match }: any) => {
-    const winnerPlayer = tempParticipants.find((p) => p.id === match.winner_id);
-    if (winnerPlayer) {
-      winnerPlayer.wonMatches++;
-    }
-
-    const loserPlayer = tempParticipants.find((p) => p.id === match.loser_id);
-    if (loserPlayer) {
-      loserPlayer.lostMatches++;
-    }
-  });
-
-  // sort participants, most wins first
-  tempParticipants.sort((a, b) => {
-    if (a.wonMatches !== b.wonMatches) {
-      return b.wonMatches - a.wonMatches;
-    }
-    if (a.lostMatches !== b.lostMatches) {
-      return a.lostMatches - b.lostMatches;
-    }
-    if (a.points !== b.points) {
-      return a.points - b.points;
-    }
-    return 0;
-  });
-
-  participants.value = tempParticipants;
+onMounted(() => {
+  store.fetchBeginnerLadder();
 });
 </script>
 
 <template>
-  <div v-if="tournament" class="container">
+  <div v-if="store.beginner" class="container">
     <ol class="participants">
-      <li v-for="(participant, i) in participants" :key="participant.id">
+      <li
+        v-for="(participant, i) in store.beginner.participants"
+        :key="participant.id"
+      >
         <ParticipantRow
           :participant="participant"
           :rank="i + 1"
