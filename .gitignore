@@ -25,6 +25,3 @@ dist-ssr
 
 # Local Netlify folder
 .netlify
-
-# _redirect file is built dynamically based on env variables
-public/_redirects
