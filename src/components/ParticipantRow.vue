@@ -15,10 +15,14 @@ defineProps<{
 
     <div class="character">
       <img
+        v-if="participant.character"
         :alt="participant.character"
-        :src="`https://picsum.photos/id/${50 + rank}/200/300`"
+        :src="`/characters/${participant.character}.webp`"
         class="character-portrait"
       />
+      <template v-else>
+        <span aria-hidden="true">???</span>
+      </template>
     </div>
 
     <div class="name" v-html="bleachify(participant.name)" />

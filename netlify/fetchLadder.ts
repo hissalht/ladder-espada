@@ -25,7 +25,10 @@ export async function fetchTournament(slug: string): Promise<LadderTournament> {
     ({ participant }: any) => ({
       id: participant.id,
       name: participant.name,
-      character: Character.SOL,
+      character:
+        (participant.custom_field_response &&
+          Object.values(participant.custom_field_response)[0]) ??
+        null,
       wonMatches: 0,
       lostMatches: 0,
       points: 0,
