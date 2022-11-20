@@ -1,32 +1,9 @@
-<script lang="ts"></script>
-
-<script setup lang="ts">
-import { onMounted } from "vue";
-import ParticipantRow from "./components/ParticipantRow.vue";
-import { useStore } from "./store";
-
-const store = useStore();
-
-onMounted(() => {
-  store.fetchBeginnerLadder();
-});
-</script>
-
 <template>
-  <div v-if="store.beginner" class="container">
-    <ol class="participants">
-      <li
-        v-for="(participant, i) in store.beginner.participants"
-        :key="participant.id"
-      >
-        <ParticipantRow
-          :participant="participant"
-          :rank="i + 1"
-          :large="i < 4"
-        />
-      </li>
-    </ol>
-  </div>
+  <nav class="navigation">
+    <RouterLink class="beginner-link" to="/beginner">Beginner</RouterLink>
+    <RouterLink class="expert-link" to="/expert">Expert</RouterLink>
+  </nav>
+  <router-view></router-view>
 </template>
 
 <style>
@@ -34,21 +11,53 @@ onMounted(() => {
 
 :root {
   --green: #5f9b42;
-  --red: #d84035;
+  --expert-red: #d84035;
+  --beginner-blue: #373e8e;
   font-family: "Lato", sans-serif;
 }
 </style>
 
 <style scoped>
-.container {
-  max-width: 52rem;
-  margin: auto;
-}
-.participants {
-  list-style: none;
+.navigation {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  padding: 2rem;
 }
 
-.participants > * + * {
-  margin-top: 0.25rem;
+.beginner-link,
+.expert-link {
+  text-decoration: none;
+  opacity: 0.75;
+  letter-spacing: 0.05em;
+}
+
+.beginner-link:hover,
+.beginner-link:focus-visible,
+.expert-link:hover,
+.expert-link:focus-visible {
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.15em;
+  text-underline-offset: 0.3em;
+}
+
+.beginner-link.router-link-exact-active,
+.expert-link.router-link-exact-active {
+  opacity: 1;
+  font-weight: 700;
+}
+
+.beginner-link {
+  color: var(--beginner-blue);
+  justify-self: flex-end;
+}
+
+.expert-link {
+  color: var(--expert-red);
+  justify-self: flex-start;
 }
 </style>

@@ -1,20 +1,21 @@
 <script lang="ts" setup>
-import { Participant } from "../types";
+import { LadderLeague, Participant } from "../types";
 
 defineProps<{
   participant: Participant;
   rank: number;
   large: boolean;
+  league: LadderLeague;
 }>();
 </script>
 <template>
-  <div class="participant" :class="{ large }">
+  <div class="participant" :class="[{ large }, league]">
     <div class="rank">{{ rank }}</div>
 
     <div class="character">
       <img
         :alt="participant.character"
-        :src="`https://picsum.photos/id/${200 + rank}/200/300`"
+        :src="`https://picsum.photos/id/${50 + rank}/200/300`"
         class="character-portrait"
       />
     </div>
@@ -36,6 +37,7 @@ defineProps<{
 <style scoped>
 .participant {
   --participant-base-size: 3rem;
+  --participant-color: var(--expert-red);
 
   display: grid;
   grid-template-columns:
@@ -55,12 +57,16 @@ defineProps<{
   grid-template-rows: calc(2 * var(--participant-base-size));
 }
 
+.participant.beginner {
+  --participant-color: var(--beginner-blue);
+}
+
 .rank,
 .character,
 .name,
 .won,
 .lost {
-  background-color: var(--red);
+  background-color: var(--participant-color);
   display: flex;
   color: white;
   align-items: center;

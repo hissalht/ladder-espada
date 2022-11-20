@@ -5,8 +5,8 @@ type LadderState = Record<LadderLeague, LadderTournament | null>;
 
 export const useStore = defineStore("ladder", {
   state: (): LadderState => ({
-    beginner: null,
-    expert: null,
+    [LadderLeague.BEGINNER]: null,
+    [LadderLeague.EXPERT]: null,
   }),
 
   actions: {
@@ -18,12 +18,10 @@ export const useStore = defineStore("ladder", {
       this[league] = (await response.json()) as LadderTournament;
     },
 
-    fetchExpertLadder() {
-      return this.fetchLadder(LadderLeague.EXPERT);
-    },
-
-    fetchBeginnerLadder() {
-      return this.fetchLadder(LadderLeague.BEGINNER);
+    async fetchLadderIfNeeded(league: LadderLeague) {
+      if (!this[league]) {
+        await this.fetchLadder(league);
+      }
     },
   },
 });
