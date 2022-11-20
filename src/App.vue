@@ -7,13 +7,11 @@
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
-
 :root {
   --green: #5f9b42;
   --expert-red: #d84035;
   --beginner-blue: #373e8e;
-  font-family: "Lato", sans-serif;
+  font-family: "Avant Garde", sans-serif;
 }
 </style>
 

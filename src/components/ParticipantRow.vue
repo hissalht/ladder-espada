@@ -82,6 +82,7 @@ defineProps<{
 
 .character {
   padding: 0;
+  position: relative;
 }
 
 .character-portrait {
@@ -91,5 +92,16 @@ defineProps<{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.character::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: var(--participant-color);
+  opacity: 0.5;
 }
 </style>

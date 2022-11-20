@@ -1,0 +1,23 @@
+@import "normalize.css/normalize.css";
+
+@font-face {
+  font-family: "  ";
+  src: url("./assets/fonts/ITCAvantGardeStd-Md.otf") format("opentype");
+  font-weight: 400;
+  descent-override: 0%;
+}
+
+@font-face {
+  font-family: "Avant Garde";
+  src: url("./assets/fonts/ITCAvantGardeStd-Bold.otf") format("opentype");
+  font-weight: 700;
+  descent-override: 0%;
+}
+
+@font-face {
+  font-family: "Avant Garde";
+  src: url("./assets/fonts/ITCAvantGardeStd-BoldObl.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  descent-override: 0%;
+}
