@@ -20,5 +20,9 @@ export const router = createRouter({
         league: LadderLeague.BEGINNER,
       },
     },
+    {
+      path: "/",
+      redirect: "/expert",
+    },
   ],
 });
