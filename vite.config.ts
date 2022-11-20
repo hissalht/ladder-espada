@@ -5,12 +5,12 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
   plugins: [vue()],
 
-  server: {
-    proxy: {
-      "/v1": {
-        target: "https://api.challonge.com",
-        changeOrigin: true,
-      },
-    },
-  },
+  // server: {
+  //   proxy: {
+  //     "/v1": {
+  //       target: "https://api.challonge.com",
+  //       changeOrigin: true,
+  //     },
+  //   },
+  // },
 });

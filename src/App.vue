@@ -12,8 +12,7 @@ const tournament = ref();
 const participants = ref<Participant[]>();
 
 onMounted(async () => {
-  const url = new URL(`/v1/tournaments/${TOURNAMENT_SLUG}.json`, window.origin);
-  url.searchParams.set("api_key", import.meta.env.VITE_APP_CHALLONGE_API_KEY);
+  const url = new URL(`/api/${TOURNAMENT_SLUG}.json`, window.origin);
   url.searchParams.set("include_participants", "1");
   url.searchParams.set("include_matches", "1");
 
@@ -69,8 +68,6 @@ onMounted(async () => {
   <div v-if="tournament" class="container">
     <ol class="participants">
       <li v-for="(participant, i) in participants" :key="participant.id">
-        <!-- {{ participant.name }} -->
-        <!-- ({{ participant.wonMatches }} - {{ participant.lostMatches }}) -->
         <ParticipantRow
           :participant="participant"
           :rank="i + 1"
