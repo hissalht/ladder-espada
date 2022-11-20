@@ -9,17 +9,33 @@
 
 @font-face {
   font-family: "Avant Garde";
-  src: url("./assets/fonts/ITCAvantGardeStd-Bold.otf") format("opentype");
+  src: url("./assets/fonts/ITCAvantGardeStd-Demi.otf") format("opentype");
   font-weight: 700;
   descent-override: 0%;
+}
+
+@font-face {
+  font-family: "Avant Garde";
+  src: url("./assets/fonts/ITCAvantGardeStd-Bold.otf") format("opentype");
+  font-weight: 900;
+  descent-override: 0%;
+}
+
+@font-face {
+  font-family: "Avant Garde Oblique";
+  src: url("./assets/fonts/ITCAvantGardeStd-DemiObl.otf") format("opentype");
+  font-weight: 700;
+  descent-override: 0%;
+  font-style: normal;
 }
 
 /* Hack to get a "super obliqued" A letter */
 @font-face {
   font-family: "Avant Garde Oblique";
   src: url("./assets/fonts/ITCAvantGardeStd-BoldObl.otf") format("opentype");
-  font-weight: 700;
+  font-weight: 900;
   descent-override: 0%;
+  font-style: normal;
 }
 
 .obl {

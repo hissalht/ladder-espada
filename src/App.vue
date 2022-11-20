@@ -17,9 +17,6 @@
 
 <style scoped>
 .navigation {
-  font-size: 1.5rem;
-  text-transform: uppercase;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
@@ -32,6 +29,9 @@
   text-decoration: none;
   opacity: 0.75;
   letter-spacing: 0.05em;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .beginner-link:hover,
@@ -46,7 +46,7 @@
 .beginner-link.router-link-exact-active,
 .expert-link.router-link-exact-active {
   opacity: 1;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .beginner-link {
