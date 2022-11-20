@@ -12,11 +12,9 @@ const tournament = ref();
 const participants = ref<Participant[]>();
 
 onMounted(async () => {
-  const url = new URL(`/api/${TOURNAMENT_SLUG}.json`, window.origin);
-  url.searchParams.set("include_participants", "1");
-  url.searchParams.set("include_matches", "1");
-
-  const response = await fetch(url);
+  const response = await fetch(
+    `/.netlify/functions/tournament?tournament=${TOURNAMENT_SLUG}`
+  );
   const data = await response.json();
   tournament.value = data.tournament;
 
