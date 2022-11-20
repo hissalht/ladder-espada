@@ -1,7 +1,7 @@
 [build]
   base = "/"
   publish = "dist/"
-  command = "yarn dev"
+  command = "yarn build"
 
 [functions]
   directory = "netlify/functions/"
